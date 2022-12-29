@@ -19,23 +19,23 @@ dotenv.config({
 // middleware
 
 app.use(
-  cors({
-    credentials: true,
-    origin: "*" || process.env.FRONTEND_URL,
-    methods: ["GET", "PUT", "PATCH", "POST", "DELETE"],
-  })
-);
-
-app.use(
   session({
     secret: process.env.SESSION_SECRET || "euryer8w7y8y9fwe",
     resave: false,
     saveUninitialized: false,
-    cookie: {
-      secure: process.env.NODE_ENV === "developement" ? false : true,
-      httpOnly: process.env.NODE_ENV === "developement" ? false : true,
-      sameSite: process.env.NODE_ENV === "developement" ? false : "none",
-    },
+    // cookie: {
+    //   secure: process.env.NODE_ENV === "developement" ? false : true,
+    //   httpOnly: process.env.NODE_ENV === "developement" ? false : true,
+    //   sameSite: process.env.NODE_ENV === "developement" ? false : "none",
+    // },
+  })
+);
+
+app.use(
+  cors({
+    credentials: true,
+    origin: "*" || process.env.FRONTEND_URL,
+    methods: ["GET", "PUT", "PATCH", "POST", "DELETE"],
   })
 );
 
